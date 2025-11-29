@@ -5,8 +5,8 @@ import "./style.css";
 const canvas = document.getElementById("canvas");
 if (!(canvas instanceof HTMLCanvasElement)) throw new Error("invalid state");
 
-const W = Math.trunc(window.innerWidth / 2);
-const H = Math.trunc(window.innerHeight / 2);
+const W = Math.trunc(window.innerWidth / 4);
+const H = Math.trunc(window.innerHeight / 4);
 
 canvas.width = W;
 canvas.height = H;
@@ -15,11 +15,12 @@ const ctx = canvas.getContext("2d", { alpha: false });
 if (!ctx) throw new Error("invalid state");
 
 const sim = initSimulation(() => Math.random(), ctx, W, H, {
-	pTreeGrowth: 0.0005,
-	pLightning: 0.0000005,
-	pFireSpread: 0.5,
-	pOnFireToBurned: 0.6,
-	pBurnedToNone: 0.0075,
+	pTreeGrowth: 0.00075,
+	pLightning: 0.000003,
+	pFireSpread: 0.333,
+	pOnFireToBurned: 0.4875,
+	pBurnedRelight: 0.5,
+	pBurnedToNone: 0.075,
 });
 renderSimulation(sim);
 
