@@ -77,11 +77,14 @@ export function stepState(sim: Simulation, x: number, y: number) {
 					const nstate = sim.state[ni];
 
 					if (nstate === stateTree) return 1;
-					else if (nstate === stateTreeBurned) return -2;
+					else if (nstate === stateTreeBurned) return -1;
 					else return 0;
 				})
 				.reduce((prev, curr) => prev + curr, 0);
-			if (sim.rand() < (neighborTreeWeight + 1) * sim.config.pTreeGrowth)
+			if (
+				sim.rand() <
+				(Math.min(neighborTreeWeight, 2) + 0.5) * sim.config.pTreeGrowth
+			)
 				sim.nextState[i] = stateTree;
 			else sim.nextState[i] = stateNone;
 			break;

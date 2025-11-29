@@ -15,15 +15,15 @@ const ctx = canvas.getContext("2d", { alpha: false });
 if (!ctx) throw new Error("invalid state");
 
 const sim = initSimulation(() => Math.random(), ctx, W, H, {
-	pTreeGrowth: 0.001,
-	pLightning: 0.000001,
-	pFireSpread: 0.4,
+	pTreeGrowth: 0.0005,
+	pLightning: 0.0000005,
+	pFireSpread: 0.5,
 	pOnFireToBurned: 0.6,
-	pBurnedToNone: 0.05,
+	pBurnedToNone: 0.0075,
 });
 renderSimulation(sim);
 
-const STEPS_PER_SECOND = 20;
+const STEPS_PER_SECOND = 40;
 const STEP_MS = 1000 / STEPS_PER_SECOND;
 
 let lastTime = performance.now();
