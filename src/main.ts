@@ -5,8 +5,8 @@ import "./style.css";
 const canvas = document.getElementById("canvas");
 if (!(canvas instanceof HTMLCanvasElement)) throw new Error("invalid state");
 
-const W = Math.trunc(window.innerWidth / 4);
-const H = Math.trunc(window.innerHeight / 4);
+const W = Math.trunc(window.innerWidth / 2);
+const H = Math.trunc(window.innerHeight / 2);
 
 canvas.width = W;
 canvas.height = H;
